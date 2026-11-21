@@ -11,6 +11,14 @@ license: CC-BY-4.0
 url: https://jakelawrence.xyz/research/ai-acceptable-use
 abstract: "A plain-language AI acceptable-use policy for small governments and nonprofits: fifteen rules, each with a no-code way to follow it."
 repository-code: "https://github.com/jake0lawrence/ai-acceptable-use"
+doi: 10.5281/zenodo.24426961
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24426960
+    description: "Every version of this piece; resolves to the newest."
+  - type: doi
+    value: 10.5281/zenodo.24426961
+    description: "Version 1.0.4."
 keywords:
   - AI governance
   - acceptable use policy
