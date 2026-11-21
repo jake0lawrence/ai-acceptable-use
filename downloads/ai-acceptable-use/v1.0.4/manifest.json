@@ -1,0 +1,33 @@
+{
+  "version": "1.0.4",
+  "dataset": "ai-acceptable-use",
+  "subject": "A plain-language AI acceptable-use policy for small governments and nonprofits: fifteen rules, each with a no-code way to follow it.",
+  "tier": "public",
+  "published": "2026-11-21",
+  "license": "CC-BY-4.0",
+  "doi": null,
+  "canonical": "https://jakelawrence.xyz/research/ai-acceptable-use",
+  "counts": {
+    "rules": 15,
+    "questions": 6
+  },
+  "files": [
+    "rules.json",
+    "rules.csv",
+    "questions.csv",
+    "policy.md",
+    "crosswalk.csv",
+    "CITATION.cff",
+    "README.md"
+  ],
+  "citation": "Lawrence, J. (2026). AI Acceptable-Use Policy (version 1.0.4) [Data set]. https://jakelawrence.xyz/research/ai-acceptable-use. CC BY 4.0.",
+  "sha256": {
+    "rules.json": "0807556f94065d07e2fd89a510c7992cafd4857b17e18f30cecdc3579d5c21e7",
+    "rules.csv": "c451ca12ac297d41ec80bcb3495a0cf5fa748c6b3a7029e87b25fe75bed14b99",
+    "questions.csv": "a275b6e425f916c1b093a9b53cdeff1c0c5b0855ce37e8ad00bddd94ec0d56b1",
+    "policy.md": "e85b09d8f785364b343e9ca513e6b8e31d7226b6b5847eb00716ad187a608c87",
+    "crosswalk.csv": "8a3372466547a4531763d650e3a57cf2ad0323a1c270aeb47f28f65e17cae8e9",
+    "CITATION.cff": "5308d37ced0f655e0d012c7966195961e21ef4b51ea6f800e760c79107b561c2",
+    "README.md": "650c82e29eedd8126eaf7c012abdeab337ae0e6e11c4da0715f707b4e9b71171"
+  }
+}

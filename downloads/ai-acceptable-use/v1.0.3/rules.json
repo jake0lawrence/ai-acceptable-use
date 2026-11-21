@@ -1,0 +1,277 @@
+{
+  "dataset": "ai-acceptable-use",
+  "version": "1.0.3",
+  "published": "2026-11-20",
+  "license": "CC BY 4.0",
+  "disclaimer": "This is a starting template, not legal advice. Public-records and privacy laws differ by state, and procurement rules differ by funder too. Have counsel review it before you adopt it.",
+  "questions": [
+    {
+      "id": "publishes",
+      "label": "We publish or send things an AI helped write",
+      "hint": "Newsletters, social posts, letters, reports, website copy."
+    },
+    {
+      "id": "personalData",
+      "label": "We handle personal information",
+      "hint": "About residents, clients, donors, students or staff."
+    },
+    {
+      "id": "publicAI",
+      "label": "We offer an AI tool the public can use",
+      "hint": "A chatbot, a search assistant, a form helper."
+    },
+    {
+      "id": "paidAI",
+      "label": "We pay for AI by usage",
+      "hint": "API keys, credits, anything billed per request."
+    },
+    {
+      "id": "connected",
+      "label": "Our AI tools connect to other systems",
+      "hint": "Email, shared drives, databases, calendars, automations."
+    },
+    {
+      "id": "civic",
+      "label": "We are a government body, or speak for one",
+      "hint": "Cities, villages, counties, townships, districts, boards."
+    }
+  ],
+  "rules": [
+    {
+      "n": 1,
+      "id": "inventory",
+      "title": "Use only approved AI tools",
+      "rule": "Keep one list of the AI tools your organization has approved and what each one may be used for. A new tool goes on the list before anyone uses it for work, not after.",
+      "why": "Tools nobody approved are tools nobody checked. You cannot protect information that flows into a service you do not know exists.",
+      "manual": "A shared spreadsheet with four columns: tool, approved uses, who approved it, date. Review it every quarter and remove what nobody uses.",
+      "how_this_site_does_it": "This site keeps a ledger of every outside service it holds a credential for. A test fails when code starts using a credential the ledger has never heard of.",
+      "applies_when": [],
+      "evidence": [
+        "src/lib/secrets/inventory.mjs#TOKEN_SOURCES",
+        "src/lib/secrets/__tests__/inventory.audit.test.js#NO STRAYS"
+      ]
+    },
+    {
+      "n": 2,
+      "id": "data",
+      "title": "Keep sensitive information out of AI tools",
+      "rule": "Keep personal information, case details, health, financial or law-enforcement records out of any AI tool that is not approved for that kind of information.",
+      "why": "What goes into a chat window may be stored, reviewed by the vendor or used to train a model. Once it is out, it is out.",
+      "manual": "Add a column to your approved-tools list: which kinds of information each tool may see. When in doubt, remove names and identifying details first.",
+      "how_this_site_does_it": "This site keeps personal details out of its public code by test: one test fails if contact details appear in the repository, and another fails if a public page imports the module that handles a client's records.",
+      "applies_when": [
+        "personalData"
+      ],
+      "evidence": [
+        "src/lib/apply/sprint/__tests__/fixture.test.js#holds no contact details",
+        "src/app/__tests__/pii-boundary.test.js#PII boundary"
+      ]
+    },
+    {
+      "n": 3,
+      "id": "human",
+      "title": "A person approves before AI-drafted work goes out",
+      "rule": "Anything an AI drafted that will be published, sent to the public or sent to another agency is read and approved by a named person first.",
+      "why": "AI output can be wrong, off-tone or confidently invented. The approval step is where a person takes responsibility for it.",
+      "manual": "Pick one approver per channel. Nothing AI-drafted is sent until the approver replies \"approved\" in writing, and you keep that reply.",
+      "how_this_site_does_it": "On this site a drafted social post can only reach \"needs review\", never \"approved\", without a person. Public-records requests are drafted by software but sent only after approval; automatic sending is off by default.",
+      "applies_when": [
+        "publishes"
+      ],
+      "evidence": [
+        "src/lib/social/critic.mjs#approvalBlocks",
+        "src/lib/foia/send.mjs#FOIA_AUTOSEND"
+      ]
+    },
+    {
+      "n": 4,
+      "id": "prohibited",
+      "title": "Check drafts against a written list of things you never publish",
+      "rule": "Keep a short written list of topics and claims your organization never publishes. Check every AI-drafted piece against it before it goes out.",
+      "why": "An AI does not know your organization's lines unless you write them down. A list turns judgment calls into a check anyone can run.",
+      "manual": "Five to ten lines on one page. The approver in the previous rule checks each draft against it and says which lines were checked.",
+      "how_this_site_does_it": "This site runs a pre-send check against its own list in its outbound paths; a newsletter issue that trips it never sends. The list itself is kept in the code and tested for consistency.",
+      "applies_when": [
+        "publishes"
+      ],
+      "evidence": [
+        "src/lib/newsletter/send-issue.js#checkRedLines",
+        "src/lib/foia/send.mjs#checkRedLines"
+      ]
+    },
+    {
+      "n": 5,
+      "id": "civic",
+      "title": "Keep public-facing AI output nonpartisan",
+      "rule": "AI-assisted content that speaks for a public body stays neutral on elections (candidates, parties, ballot questions) and critiques systems rather than people.",
+      "why": "Public bodies owe residents neutrality, and many are bound to it by law. An AI draft can slip a political frame in without anyone noticing.",
+      "manual": "Add a nonpartisan line to your never-publish list, and have your approver check each draft for it.",
+      "how_this_site_does_it": "This site's list includes a nonpartisan rule, and the same rule is written into the instructions for the AI that critiques drafts before a person sees them.",
+      "applies_when": [
+        "civic"
+      ],
+      "evidence": [
+        "src/lib/social/critic.mjs#judgmentRedLines"
+      ]
+    },
+    {
+      "n": 6,
+      "id": "disclose",
+      "title": "Say when AI is involved, and never fake a person",
+      "rule": "Tell people when AI wrote, summarized or answered something they rely on. Never present an AI voice, image or message as a real person.",
+      "why": "Trust in a public body or a nonprofit is the whole asset. Being caught passing AI off as a person spends it all at once.",
+      "manual": "One standard sentence on AI-assisted material, for example \"Drafted with AI assistance and reviewed by staff.\" No AI voices or avatars that imply a real employee.",
+      "how_this_site_does_it": "On this site a computer reading a page aloud is labeled as a device voice, and in its language course a test keeps a synthetic voice from standing in for a native speaker.",
+      "applies_when": [
+        "publishes",
+        "publicAI"
+      ],
+      "evidence": [
+        "src/components/cta/ListenButton.jsx#your browser voice",
+        "press/src/components/lightning/__tests__/no-device-voice.test.js#device-voice rule"
+      ]
+    },
+    {
+      "n": 7,
+      "id": "verify",
+      "title": "Check facts and sources before you rely on AI output",
+      "rule": "Before AI output is used in a decision, a publication or a reply to the public, a person checks its facts against the original source.",
+      "why": "AI tools produce fluent text that can be wrong. A citation you did not open is not a citation.",
+      "manual": "Require a source link for every factual claim in AI-assisted work, and have the approver open at least the ones that matter.",
+      "how_this_site_does_it": "This site's assistant attaches the sources it drew on to every answer, its civic assistant only cites approved official sites, and research figures are recomputed by test on every change.",
+      "applies_when": [],
+      "evidence": [
+        "src/lib/site/agent/loop.mjs#citationsFromResult",
+        "src/lib/rules/citation.js#ALLOWED_HOSTS",
+        "src/lib/research/__tests__/claims.test.js#recompute true"
+      ]
+    },
+    {
+      "n": 8,
+      "id": "spend",
+      "title": "Put a spending cap on paid AI",
+      "rule": "Every paid AI service has a monthly budget, a warning before it is reached, and a stop when it is.",
+      "why": "Usage-based billing has no natural ceiling. A runaway automation or a busy public tool can spend a month's budget in a day.",
+      "manual": "Set the vendor's own billing limit and alert, name who receives the alert, and write down what gets switched off at the limit.",
+      "how_this_site_does_it": "This site tracks model spend month to date against a ceiling, warns at 80 percent, and pauses non-essential AI work when the ceiling is reached.",
+      "applies_when": [
+        "paidAI"
+      ],
+      "evidence": [
+        "src/lib/ai-spend/brake.mjs#ALARM_PCT",
+        "src/lib/ai-spend/brake.mjs#enforceSpendBrake"
+      ]
+    },
+    {
+      "n": 9,
+      "id": "ratelimit",
+      "title": "Limit how much the public can use your AI tool",
+      "rule": "A public AI tool has a per-person limit and a total budget, so one visitor cannot use it all or run up the bill.",
+      "why": "Anything free and public will be used at volume, sometimes by scripts. Limits keep the tool available and the cost predictable.",
+      "manual": "Use the limit settings your vendor offers, and set a separate, lower budget for the public tool than for staff use.",
+      "how_this_site_does_it": "This site's public assistant allows each visitor a set number of questions per minute, with further caps per hour and per day, and pauses for anonymous visitors when the monthly budget is spent.",
+      "applies_when": [
+        "publicAI"
+      ],
+      "evidence": [
+        "src/lib/rate-limit.js#siteConcierge",
+        "src/lib/site/agent/request.mjs#spendBrake"
+      ]
+    },
+    {
+      "n": 10,
+      "id": "secrets",
+      "title": "Keep keys and passwords in one secure store",
+      "rule": "API keys and passwords for AI services live in one secure store. They are never pasted into documents, chat messages, AI prompts or shared screens.",
+      "why": "A leaked key is a bill and a breach. Keys pasted into chats and prompts end up in logs and histories you do not control.",
+      "manual": "Use a password manager with a shared vault for service keys. Rotate a key whenever someone who had it leaves.",
+      "how_this_site_does_it": "This site's setup flows read a credential on the server and write it straight to the store, so it never passes through a browser, and an audit checks that every credential in use is accounted for.",
+      "applies_when": [
+        "paidAI",
+        "connected"
+      ],
+      "evidence": [
+        ".claude/rules/connection-wizards.md#No credential passes through the browser",
+        "src/lib/secrets/__tests__/inventory.audit.test.js#EVERY CREDENTIAL IS COVERED"
+      ]
+    },
+    {
+      "n": 11,
+      "id": "leastpriv",
+      "title": "Give AI tools the least access they need",
+      "rule": "When an AI tool connects to email, files or other systems, grant only the permissions its approved use requires, and review them when the use changes.",
+      "why": "An AI tool with broad access can read, send or delete far more than anyone intended, and a compromised account inherits all of it.",
+      "manual": "Before approving a connection, write down which permissions it asks for and why each one is needed. Refuse any you cannot justify.",
+      "how_this_site_does_it": "This site requests only the permissions a feature uses, and a test fails if a connection ever asks for the forbidden ones.",
+      "applies_when": [
+        "connected"
+      ],
+      "evidence": [
+        "src/lib/social/networks/meta-oauth.mjs#META_SCOPES",
+        "src/lib/social/networks/__tests__/meta-oauth.test.js#never asks for"
+      ]
+    },
+    {
+      "n": 12,
+      "id": "killswitch",
+      "title": "Keep an off switch anyone on duty can use",
+      "rule": "Every automated AI process that sends, posts or acts on your behalf can be stopped quickly by a named person, without waiting for a developer.",
+      "why": "When something goes wrong at night or on a weekend, the question is how fast it stops, not who built it.",
+      "manual": "For each automation, write one line: how to pause it and who is allowed to. Test the off switch once before relying on it.",
+      "how_this_site_does_it": "This site has one switch that silences every notification channel at once, each channel's starting state is a recorded owner decision, and automatic sending of records requests stays off unless someone turns it on.",
+      "applies_when": [
+        "publishes",
+        "connected",
+        "publicAI"
+      ],
+      "evidence": [
+        "src/lib/notifications/mute.mjs#notificationsMuted",
+        "src/lib/foia/send.mjs#autoSendApproved"
+      ]
+    },
+    {
+      "n": 13,
+      "id": "log",
+      "title": "Keep a record of what AI did",
+      "rule": "Keep a simple record of which AI tool was used, for what and by whom, with the date, for anything that leaves the organization or informs a decision.",
+      "why": "A records request or an audit will ask what happened. \"Someone used a chatbot\" is not an answer.",
+      "manual": "Note the tool and the reviewer in the file or ticket where the work lives. For recurring automations, keep the vendor's usage log.",
+      "how_this_site_does_it": "This site logs every paid AI call with what it was for and what it cost, and reads its monthly spend from that log.",
+      "applies_when": [],
+      "evidence": [
+        "src/lib/ai-spend/events.mjs#logAiUsage",
+        "src/lib/ai-spend/events.mjs#spendMonthToDate"
+      ]
+    },
+    {
+      "n": 14,
+      "id": "silent",
+      "title": "Watch for automations that quietly stop working",
+      "rule": "Check on a schedule that each AI automation is still running and still doing its job, not only that it has not reported an error.",
+      "why": "The most expensive failure is the one nobody notices: a reminder that stops sending, a report that stops arriving.",
+      "manual": "A monthly checklist: each automation, when it last ran, and whether its output arrived. Anything that did not gets a person assigned.",
+      "how_this_site_does_it": "This site has a dashboard that classifies every scheduled job as fired, failing or silent, and a test keeps that list in step with the jobs that actually exist.",
+      "applies_when": [
+        "connected"
+      ],
+      "evidence": [
+        "src/lib/burn/model.mjs#classifyJob",
+        "src/lib/burn/__tests__/catalog-drift.test.js#describe"
+      ]
+    },
+    {
+      "n": 15,
+      "id": "review",
+      "title": "Name an owner and review this policy on a schedule",
+      "rule": "One named person owns this policy. It is reviewed at least every six months and whenever you add a tool, a use or a kind of data.",
+      "why": "AI tools change monthly. A policy nobody owns describes last year's tools.",
+      "manual": "Put the owner's name and the next review date at the top of the policy, and put the review on a calendar.",
+      "how_this_site_does_it": "This page carries its own review date, kept in the same file as the rules, so the date and the rules change together.",
+      "applies_when": [],
+      "evidence": [
+        "src/lib/ai-use-policy/policy.mjs#reviewBy",
+        "src/lib/ai-use-policy/policy.mjs#reviewOverdue"
+      ]
+    }
+  ]
+}
