@@ -1,6 +1,6 @@
 # AI Acceptable-Use Policy
 
-A plain-language template for small governments and nonprofits. The public mirror of the research piece at [jakelawrence.xyz/research/ai-acceptable-use](https://jakelawrence.xyz/research/ai-acceptable-use): a plain-language AI acceptable-use policy for small governments and nonprofits. Version 1.0.4 is the newest, published 2026-11-21.
+A plain-language template for small governments and nonprofits. The public mirror of the research piece at [jakelawrence.xyz/research/ai-acceptable-use](https://jakelawrence.xyz/research/ai-acceptable-use): a plain-language AI acceptable-use policy for small governments and nonprofits. Version 1.0.5 is the newest, published 2026-11-21.
 
 > **Not legal advice.** This is a starting template, not legal advice. Public-records and privacy laws differ by state, and procurement rules differ by funder too. Have counsel review it before you adopt it.
 
@@ -9,7 +9,7 @@ Every file here is a frozen release, exactly as the site publishes it, with its 
 | | |
 |---|---|
 | The live page | https://jakelawrence.xyz/research/ai-acceptable-use |
-| The newest release's files | https://jakelawrence.xyz/downloads/ai-acceptable-use/v1.0.4/ |
+| The newest release's files | https://jakelawrence.xyz/downloads/ai-acceptable-use/v1.0.5/ |
 | One permanent link per version | `https://jakelawrence.xyz/research/ai-acceptable-use/v/<version>` |
 | License | CC BY 4.0 ([LICENSE.md](LICENSE.md)) |
 | Cite | [CITATION.cff](CITATION.cff) (GitHub's "Cite this repository" reads it) |
@@ -30,6 +30,7 @@ Each folder under `downloads/ai-acceptable-use/` is one frozen version, and `lat
 
 | Version | Published | Contents | Frozen page |
 |---|---|---|---|
+| [1.0.5](downloads/ai-acceptable-use/v1.0.5) | 2026-11-21 | 15 rules, 6 questions | [https://jakelawrence.xyz/research/ai-acceptable-use/v/1.0.5](https://jakelawrence.xyz/research/ai-acceptable-use/v/1.0.5) |
 | [1.0.4](downloads/ai-acceptable-use/v1.0.4) | 2026-11-21 | 15 rules, 6 questions | [https://jakelawrence.xyz/research/ai-acceptable-use/v/1.0.4](https://jakelawrence.xyz/research/ai-acceptable-use/v/1.0.4) |
 | [1.0.3](downloads/ai-acceptable-use/v1.0.3) | 2026-11-20 | 15 rules, 6 questions | [https://jakelawrence.xyz/research/ai-acceptable-use/v/1.0.3](https://jakelawrence.xyz/research/ai-acceptable-use/v/1.0.3) |
 
@@ -48,22 +49,24 @@ checks every file of every version against its `SHA256SUMS` and `manifest.json`,
 Archived on Zenodo with a DOI:
 
 - **All versions** (always the newest): [https://doi.org/10.5281/zenodo.24426960](https://doi.org/10.5281/zenodo.24426960)
+- **1.0.5:** [https://doi.org/10.5281/zenodo.24430619](https://doi.org/10.5281/zenodo.24430619)
 - **1.0.4:** [https://doi.org/10.5281/zenodo.24426961](https://doi.org/10.5281/zenodo.24426961)
 
 Cite the version you used by its own DOI.
 
-Version 1.0.4, as the release gives it:
+Version 1.0.5, as the release gives it:
 
 ```
-Lawrence, J. (2026). AI Acceptable-Use Policy (version 1.0.4) [Data set]. https://jakelawrence.xyz/research/ai-acceptable-use. CC BY 4.0.
+Lawrence, J. (2026). AI Acceptable-Use Policy (version 1.0.5) [Data set]. https://jakelawrence.xyz/research/ai-acceptable-use. CC BY 4.0.
 ```
 
-[CITATION.cff](CITATION.cff) is the same in machine-readable form, for version 1.0.4. Each version's own `CITATION.cff` is in its folder. The release files carry `doi: null` by design, since a version is frozen before its DOI can exist; the DOI is recorded in the site's Zenodo registry and in this README and `CITATION.cff`.
+[CITATION.cff](CITATION.cff) is the same in machine-readable form, for version 1.0.5. Each version's own `CITATION.cff` is in its folder. The release files carry `doi: null` by design, since a version is frozen before its DOI can exist; the DOI is recorded in the site's Zenodo registry and in this README and `CITATION.cff`.
 
 ## What changed, version by version
 
-From the 1.0.4 release's own README:
+From the 1.0.5 release's own README:
 
+- 1.0.5 (2026-11-21): Three evidence citations were unable to fail and so proved nothing: one named a word found in every test file, and two pointed at this policy's own file. Each now names something specific in another file, and a test refuses both kinds from here on. The rules themselves are unchanged.
 - 1.0.4 (2026-11-21): Adds a crosswalk: each rule names where it falls in the NIST AI Risk Management Framework 1.0, quoting NIST's outcome text, and in ISO/IEC 42001:2023 by clause and control title, with full or partial fit, a confidence and the reason. Rules with no honest fit say why. The rules themselves are unchanged.
 - 1.0.3 (2026-11-20): The page no longer says a test enforces the review date; that test was retired on October 16. The date is shown, and the page now says so at the top once it passes. Answers can be shared as a link, and the export shows a preview before you save it.
 - 1.0.2 (2026-11-06): The off-switch rule's note says what is true now: Telegram and email notifications are on by the owner's decision, browser push is still off, and one switch still silences every channel.

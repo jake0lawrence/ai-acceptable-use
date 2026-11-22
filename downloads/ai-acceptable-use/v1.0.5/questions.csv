@@ -1,0 +1,7 @@
+id,label,hint
+publishes,We publish or send things an AI helped write,"Newsletters, social posts, letters, reports, website copy."
+personalData,We handle personal information,"About residents, clients, donors, students or staff."
+publicAI,We offer an AI tool the public can use,"A chatbot, a search assistant, a form helper."
+paidAI,We pay for AI by usage,"API keys, credits, anything billed per request."
+connected,Our AI tools connect to other systems,"Email, shared drives, databases, calendars, automations."
+civic,"We are a government body, or speak for one","Cities, villages, counties, townships, districts, boards."
