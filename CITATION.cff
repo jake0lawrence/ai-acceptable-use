@@ -5,13 +5,13 @@ type: dataset
 authors:
   - family-names: Lawrence
     given-names: Jake
-version: 1.0.4
+version: 1.0.5
 date-released: 2026-11-21
 license: CC-BY-4.0
 url: https://jakelawrence.xyz/research/ai-acceptable-use
 abstract: "A plain-language AI acceptable-use policy for small governments and nonprofits: fifteen rules, each with a no-code way to follow it."
 repository-code: "https://github.com/jake0lawrence/ai-acceptable-use"
-doi: 10.5281/zenodo.24426961
+doi: 10.5281/zenodo.24430619
 identifiers:
   - type: doi
     value: 10.5281/zenodo.24426960
@@ -19,6 +19,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.24426961
     description: "Version 1.0.4."
+  - type: doi
+    value: 10.5281/zenodo.24430619
+    description: "Version 1.0.5."
 keywords:
   - AI governance
   - acceptable use policy
