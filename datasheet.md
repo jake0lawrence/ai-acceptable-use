@@ -17,6 +17,10 @@ A plain-language AI acceptable-use policy template for small governments and non
 
 Each version of the template is frozen when it is published: its files on the website (`/downloads/ai-acceptable-use/v<version>/`) never change, and a frozen page shows it at `/research/ai-acceptable-use/v/<version>`. A change to any rule is a new version, with a changelog entry, and a new version DOI under this record's concept DOI.
 
+## Read with
+
+*Policy as Code, Graded Twice*, a methods preprint by the same author, describes how this template and the self-assessment published beside it are kept true to a running system, and what replaying their checks against the site's own history caught and missed. DOI [10.5281/zenodo.24430329](https://doi.org/10.5281/zenodo.24430329), which always resolves to the newest version of the paper.
+
 ## What it is not
 
 Not legal advice. Public-records and privacy laws differ by state, and procurement rules differ by funder. Have counsel review it before adopting it.
